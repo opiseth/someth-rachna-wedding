@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Someth & Rachna Wedding Invitation | ២៥ មេសា ២០២៧</title>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Wedding of Someth & Rachna">
+  <meta property="og:description" content="យើងខ្ញុំមានកិត្តិយសសូមគោរពអញ្ជើញឯកឧត្តម លោកជំទាវ លោក លោកស្រី ចូលរួមពិធីមង្គលការ ២៥ មេសា ២០២៧">
+  <meta property="og:image" content="../assets/images/engagement-1.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Kantumruy+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Moul&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold-primary: #C5A059;
+      --gold-light: #DFCA9B;
+      --gold-dark: #916E32;
+      --bg-cream: #FDFBF7;
+      --bg-card: #FFFFFF;
+      --text-dark: #2B2625;
+      --text-muted: #7A726E;
+      --crimson: #8C2434;
+      --shadow-soft: 0 10px 30px rgba(197, 160, 89, 0.15);
+      --font-khmer-title: 'Moul', cursive;
+      --font-khmer-body: 'Kantumruy Pro', sans-serif;
+      --font-en-title: 'Cinzel', serif;
+      --font-en-body: 'Playfair Display', serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: #1A1715;
+      color: var(--text-dark);
+      font-family: var(--font-khmer-body);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Mobile Container App Frame */
+    .app-wrapper {
+      width: 100%;
+      max-width: 440px;
+      min-height: 100vh;
+      background: var(--bg-cream);
+      position: relative;
+      overflow-x: hidden;
+      box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    }
+
+    /* Intro Overlay Screen */
+    #envelope-screen {
+      position: fixed;
+      inset: 0;
+      max-width: 440px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #1f1b18 0%, #12100e 100%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      color: #fff;
+      text-align: center;
+      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+    }
+
+    #envelope-screen.opened {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .envelope-box {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(197, 160, 89, 0.35);
+      border-radius: 20px;
+      padding: 35px 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      position: relative;
+    }
+
+    .seal-icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #DFCA9B 0%, #C5A059 60%, #8C6A2E 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(223, 202, 155, 0.4);
+      font-family: var(--font-en-title);
+      font-size: 26px;
+      font-weight: 700;
+      color: #1A1715;
+    }
+
+    .guest-tag {
+      display: inline-block;
+      margin: 15px 0 8px;
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      background: rgba(197, 160, 89, 0.2);
+      color: var(--gold-light);
+      text-transform: uppercase;
+    }
+
+    .guest-name-text {
+      font-size: 22px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 25px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    }
+
+    .btn-open-invitation {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #C5A059 0%, #E3CDA0 50%, #9E7A36 100%);
+      color: #1E1A17;
+      font-family: var(--font-khmer-body);
+      font-size: 16px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(197, 160, 89, 0.4);
+      animation: pulseGold 2s infinite;
+      transition: transform 0.2s;
+    }
+
+    @keyframes pulseGold {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.6); }
+      50% { transform: scale(1.04); box-shadow: 0 0 0 14px rgba(197, 160, 89, 0); }
+    }
+
+    /* Floating Music Toggle */
+    .music-widget {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 999;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--gold-light);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+
+    .music-widget.playing svg {
+      animation: spinVinyl 5s linear infinite;
+    }
+
+    @keyframes spinVinyl {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      padding: 40px 24px 30px;
+      text-align: center;
+      background: linear-gradient(180deg, #F9F5EC 0%, #FFFFFF 100%);
+    }
+
+    .khmer-header-title {
+      font-family: var(--font-khmer-title);
+      font-size: 15px;
+      color: var(--gold-dark);
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .invitation-badge {
+      font-family: var(--font-en-title);
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .couple-avatar-wrap {
+      width: 250px;
+      height: 330px;
+      margin: 0 auto 25px;
+      border-radius: 125px 125px 20px 20px;
+      overflow: hidden;
+      border: 4px solid #FFFFFF;
+      box-shadow: 0 15px 35px rgba(197, 160, 89, 0.25);
+      position: relative;
+    }
+
+    .couple-avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .couple-names-khmer {
+      font-family: var(--font-khmer-title);
+      font-size: 26px;
+      color: var(--crimson);
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .couple-names-en {
+      font-family: var(--font-en-title);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold-dark);
+      letter-spacing: 2px;
+    }
+
+    /* Date & Countdown Banner */
+    .countdown-card {
+      margin: 20px 20px 30px;
+      padding: 24px 16px;
+      background: linear-gradient(135deg, #2A2522 0%, #1A1715 100%);
+      border-radius: 18px;
+      color: #fff;
+      text-align: center;
+      border: 1px solid rgba(197, 160, 89, 0.4);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .wedding-date-label {
+      font-size: 14px;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+    }
+
+    .wedding-date-main {
+      font-family: var(--font-en-title);
+      font-size: 22px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 18px;
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .countdown-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(197, 160, 89, 0.25);
+      border-radius: 12px;
+      padding: 10px 4px;
+    }
+
+    .countdown-num {
+      font-family: var(--font-en-title);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+
+    .countdown-label {
+      font-size: 11px;
+      color: #D3CECA;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+
+    .btn-cal {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      padding: 10px 22px;
+      background: rgba(197, 160, 89, 0.2);
+      border: 1px solid var(--gold-primary);
+      border-radius: 30px;
+      color: var(--gold-light);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    /* Program Section */
+    .section-wrap {
+      padding: 30px 20px;
+    }
+
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .section-title-kh {
+      font-family: var(--font-khmer-title);
+      font-size: 18px;
+      color: var(--crimson);
+      margin-bottom: 4px;
+    }
+
+    .section-title-en {
+      font-family: var(--font-en-title);
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+    }
+
+    .program-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid #ECE7DE;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    }
+
+    .program-session-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      background: #FAF5EA;
+      color: var(--gold-dark);
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 30px;
+      margin-bottom: 15px;
+      border: 1px solid var(--gold-light);
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 15px;
+      padding-bottom: 16px;
+      border-left: 2px solid var(--gold-light);
+      margin-left: 10px;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .timeline-item:last-child {
+      border-left: 2px solid transparent;
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold-primary);
+      border: 2px solid #FFFFFF;
+    }
+
+    .timeline-time {
+      font-family: var(--font-en-title);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--crimson);
+      min-width: 65px;
+    }
+
+    .timeline-desc h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+
+    .timeline-desc p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Location Card */
+    .location-box {
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 22px;
+      text-align: center;
+      border: 1px solid #ECE7DE;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    }
+
+    .venue-name-kh {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--crimson);
+      margin-bottom: 6px;
+    }
+
+    .venue-address {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .btn-maps {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #1e3542 0%, #2f4a5c 100%);
+      color: #FFFFFF;
+      padding: 12px 28px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 8px 20px rgba(30, 53, 66, 0.25);
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .gallery-thumb {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      position: relative;
+    }
+
+    .gallery-thumb.span-2 {
+      grid-column: span 2;
+      aspect-ratio: 16/10;
+    }
+
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-thumb:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Gift & ABA Pay */
+    .gift-card {
+      background: linear-gradient(135deg, #FBF8F2 0%, #F5EFE3 100%);
+      border-radius: 18px;
+      padding: 24px;
+      text-align: center;
+      border: 1px solid var(--gold-light);
+    }
+
+    .gift-title {
+      font-family: var(--font-khmer-title);
+      font-size: 16px;
+      color: var(--gold-dark);
+      margin-bottom: 6px;
+    }
+
+    .bank-box {
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 16px 0;
+      border: 1px dashed var(--gold-primary);
+    }
+
+    .bank-account-num {
+      font-family: monospace;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--crimson);
+      letter-spacing: 1px;
+      margin: 4px 0;
+    }
+
+    .btn-copy {
+      background: var(--gold-primary);
+      color: #fff;
+      border: none;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 6px;
+    }
+
+    /* Guestbook Wishes */
+    .wishes-card {
+      background: #FFFFFF;
+      border-radius: 18px;
+      padding: 22px;
+      border: 1px solid #ECE7DE;
+    }
+
+    .input-row {
+      margin-bottom: 14px;
+    }
+
+    .input-row input, .input-row textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #DCD6CD;
+      font-family: var(--font-khmer-body);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .input-row input:focus, .input-row textarea:focus {
+      border-color: var(--gold-primary);
+    }
+
+    .btn-submit-wish {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #C5A059 0%, #9E7A36 100%);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .wishes-feed {
+      margin-top: 20px;
+      max-height: 280px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .wish-item {
+      background: #FAF8F5;
+      padding: 12px 14px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border-left: 3px solid var(--gold-primary);
+    }
+
+    .wish-author {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--gold-dark);
+      margin-bottom: 3px;
+    }
+
+    .wish-message {
+      font-size: 13px;
+      color: var(--text-dark);
+      line-height: 1.4;
+    }
+
+    /* Bottom Navigation Bar */
+    .bottom-nav {
+      position: sticky;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid #ECE7DE;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 5px;
+      z-index: 900;
+    }
+
+    .nav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 600;
+      gap: 3px;
+    }
+
+    .nav-btn.active, .nav-btn:hover {
+      color: var(--gold-dark);
+    }
+
+    .nav-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Lightbox Modal */
+    #lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    #lightbox-modal img {
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 10px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- App Wrapper -->
+  <div class="app-wrapper">
+
+    <!-- Envelope Opening Screen -->
+    <div id="envelope-screen">
+      <div class="envelope-box">
+        <div class="seal-icon">S&R</div>
+        <p style="font-family: var(--font-en-title); letter-spacing: 3px; font-size: 12px; color: var(--gold-light);">ROYAL WEDDING INVITATION</p>
+        <h2 style="font-family: var(--font-khmer-title); font-size: 22px; color: #fff; margin: 8px 0 12px;">សោមេធ & រចនា</h2>
+        <p style="font-size: 14px; color: #D6CECA; margin-bottom: 5px;">សូមគោរពអញ្ជើញ</p>
+        <div class="guest-tag">HONORED GUEST</div>
+        <div class="guest-name-text" id="envelope-guest-name">ឯកឧត្តម លោកជំទាវ លោក លោកស្រី</div>
+        <p style="font-size: 13px; color: #ADA29D; margin-bottom: 25px; line-height: 1.5;">ចូលរួមជាអធិបតី និងភ្ញៀវកិត្តិយសក្នុងពិធីសិរីសួស្តីអាពាហ៍ពិពាហ៍</p>
+        <button class="btn-open-invitation" id="btn-open-invitation">
+          <span>បើកសំបុត្រអញ្ជើញ</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Floating Audio Toggle -->
+    <div class="music-widget" id="music-widget" title="ចាក់បទភ្លេង">
+      <svg id="music-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C5A059" stroke-width="2">
+        <path d="M9 18V5l12-2v13"></path>
+        <circle cx="6" cy="18" r="3"></circle>
+        <circle cx="18" cy="16" r="3"></circle>
+      </svg>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="section-home">
+      <div class="khmer-header-title">សិរីសួស្តីអាពាហ៍ពិពាហ៍</div>
+      <div class="invitation-badge">Save The Date</div>
+      <div class="couple-avatar-wrap">
+        <img src="../assets/images/engagement-1.jpg" alt="Someth & Rachna">
+      </div>
+      <div class="couple-names-khmer">សោមេធ & រចនា</div>
+      <div class="couple-names-en">Someth & Rachna</div>
+      <p style="margin-top: 12px; font-size: 14px; color: var(--text-muted); line-height: 1.6;">
+        យើងខ្ញុំមានសេចក្តីសោមនស្សរីករាយ សូមគោរពអញ្ជើញ<br>
+        <strong id="content-guest-name" style="color: var(--gold-dark); font-size: 16px;">ឯកឧត្តម លោកជំទាវ លោក លោកស្រី</strong><br>
+        ចូលរួមជាសក្ខីភាព និងប្រសិទ្ធពរជ័យក្នុងថ្ងៃមង្គលការរបស់យើងខ្ញុំ
+      </p>
+    </section>
+
+    <!-- Countdown & Date Card -->
+    <div class="countdown-card">
+      <div class="wedding-date-label">ថ្ងៃអាទិត្យ ទី២៥ ខែមេសា ឆ្នាំ២០២៧</div>
+      <div class="wedding-date-main">SUNDAY, APRIL 25, 2027</div>
+      
+      <div class="countdown-grid">
+        <div class="countdown-box">
+          <div class="countdown-num" id="cd-days">00</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-num" id="cd-hours">00</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-num" id="cd-mins">00</div>
+          <div class="countdown-label">Mins</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-num" id="cd-secs">00</div>
+          <div class="countdown-label">Secs</div>
+        </div>
+      </div>
+
+      <a class="btn-cal" target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=The+Wedding+of+Someth+%26+Rachna&dates=20270425T010000Z/20270425T150000Z&details=Wedding+Celebration+of+Someth+and+Rachna&location=Phnom+Penh">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <span>Save To Google Calendar</span>
+      </a>
+    </div>
+
+    <!-- Program Agenda -->
+    <section class="section-wrap" id="section-program">
+      <div class="section-title-wrap">
+        <div class="section-title-kh">របៀបវារៈកម្មវិធី</div>
+        <div class="section-title-en">Wedding Schedule</div>
+      </div>
+
+      <!-- Morning Ceremony -->
+      <div class="program-card">
+        <span class="program-session-badge">🌅 កម្មវិធីពេលព្រឹក / Morning Ceremony</span>
+        <div class="timeline-item">
+          <div class="timeline-time">07:00 AM</div>
+          <div class="timeline-desc">
+            <h4>ជួបជុំភ្ញៀវកិត្តិយស</h4>
+            <p>Guest Arrival & Morning Refreshment</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">07:30 AM</div>
+          <div class="timeline-desc">
+            <h4>ពិធីហែជំនូនចូលរោងជ័យ</h4>
+            <p>Groom's Procession & Dowry Offering</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">08:30 AM</div>
+          <div class="timeline-desc">
+            <h4>ពិធីសំពះផ្ទឹម ចងដៃ និងព្រះសង្ឃសូត្រមន្ត</h4>
+            <p>Monk Blessing & Knot Tying Ceremony</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">10:00 AM</div>
+          <div class="timeline-desc">
+            <h4>ពិធីកាត់សក់បង្កក់សិរី និងថតរូបអនុស្សាវរីយ៍</h4>
+            <p>Hair Cutting Ceremony & Family Portraits</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">11:30 AM</div>
+          <div class="timeline-desc">
+            <h4>អញ្ជើញពិសាអាហារថ្ងៃត្រង់</h4>
+            <p>Family & Guests Lunch</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Evening Reception -->
+      <div class="program-card">
+        <span class="program-session-badge">🌙 កម្មវិធីពេលល្ងាច / Evening Banquet</span>
+        <div class="timeline-item">
+          <div class="timeline-time">05:00 PM</div>
+          <div class="timeline-desc">
+            <h4>ទទួលបដិសណ្ឋារកិច្ច និងថតរូបមុខរោង</h4>
+            <p>Cocktail Reception & Photo Session</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">06:30 PM</div>
+          <div class="timeline-desc">
+            <h4>ពិធីពិសាភោជនាហារ និងកាត់នំមង្គលការ</h4>
+            <p>Grand Banquet Dinner & Cake Cutting</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">08:30 PM</div>
+          <div class="timeline-desc">
+            <h4>ការរាំកម្សាន្ត និងជូនដំណើរភ្ញៀវ</h4>
+            <p>Celebration Dancing & Farewell</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Venue & Location -->
+    <section class="section-wrap" id="section-location" style="background: #F8F5EE;">
+      <div class="section-title-wrap">
+        <div class="section-title-kh">ទីតាំងប្រារព្ធពិធី</div>
+        <div class="section-title-en">Wedding Venue & Map</div>
+      </div>
+      <div class="location-box">
+        <div style="font-size: 32px; margin-bottom: 10px;">🏛️</div>
+        <div class="venue-name-kh">មជ្ឈមណ្ឌលសន្និបាត និងរៀបអាពាហ៍ពិពាហ៍</div>
+        <div class="venue-address">
+          Someth & Rachna Wedding Hall<br>
+          Phnom Penh, Cambodia
+        </div>
+        <a class="btn-maps" target="_blank" href="https://www.google.com/maps?q=place_id:ChIJnW1xo-lRCTERQk28WazEhaY">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span>មើលទីតាំងលើ Google Maps</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="section-wrap" id="section-gallery">
+      <div class="section-title-wrap">
+        <div class="section-title-kh">កម្រងរូបភាពអនុស្សាវរីយ៍</div>
+        <div class="section-title-en">Sweet Moments Gallery</div>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-thumb span-2" onclick="openLightbox('../assets/images/engagement-4.jpg')">
+          <img src="../assets/images/engagement-4.jpg" alt="Engagement Ceremony">
+        </div>
+        <div class="gallery-thumb" onclick="openLightbox('../assets/images/engagement-5.jpg')">
+          <img src="../assets/images/engagement-5.jpg" alt="Engagement 5">
+        </div>
+        <div class="gallery-thumb" onclick="openLightbox('../assets/images/engagement-6.jpg')">
+          <img src="../assets/images/engagement-6.jpg" alt="Engagement 6">
+        </div>
+        <div class="gallery-thumb" onclick="openLightbox('../assets/images/engagement-7.jpg')">
+          <img src="../assets/images/engagement-7.jpg" alt="Engagement 7">
+        </div>
+        <div class="gallery-thumb" onclick="openLightbox('../assets/images/engagement-8.jpg')">
+          <img src="../assets/images/engagement-8.jpg" alt="Engagement 8">
+        </div>
+        <div class="gallery-thumb span-2" onclick="openLightbox('../assets/images/engagement-9.jpg')">
+          <img src="../assets/images/engagement-9.jpg" alt="Engagement 9">
+        </div>
+        <div class="gallery-thumb" onclick="openLightbox('../assets/images/engagement-2.jpg')">
+          <img src="../assets/images/engagement-2.jpg" alt="Engagement Portrait 2">
+        </div>
+        <div class="gallery-thumb" onclick="openLightbox('../assets/images/engagement-3.jpg')">
+          <img src="../assets/images/engagement-3.jpg" alt="Engagement Portrait 3">
+        </div>
+      </div>
+    </section>
+
+    <!-- Digital Gift & ABA -->
+    <section class="section-wrap" id="section-gift">
+      <div class="gift-card">
+        <div style="font-size: 30px; margin-bottom: 8px;">🎁</div>
+        <div class="gift-title">ចំណងដៃអាពាហ៍ពិពាហ៍</div>
+        <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">
+          វត្តមានដ៏ខ្ពង់ខ្ពស់របស់លោកអ្នកគឺជាកិត្តិយសដ៏ធំធេងសម្រាប់យើងខ្ញុំ។ សម្រាប់លោកអ្នកដែលមានបំណងចងដៃជាទឹកប្រាក់៖
+        </p>
+        <div class="bank-box">
+          <div style="font-size: 12px; color: var(--text-muted);">ABA BANK / KHQR</div>
+          <div class="bank-account-num">001 888 2504</div>
+          <div style="font-size: 14px; font-weight: 700; color: var(--text-dark);">SOMETH & RACHNA</div>
+          <button class="btn-copy" onclick="copyAccount('0018882504')">📋 ចម្លងលេខកុង / Copy</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guestbook Wishes -->
+    <section class="section-wrap" id="section-wishes">
+      <div class="wishes-card">
+        <div class="section-title-wrap">
+          <div class="section-title-kh">ពាក្យជូនពរ</div>
+          <div class="section-title-en">Leave Your Blessings</div>
+        </div>
+        <form id="wish-form" onsubmit="submitWish(event)">
+          <div class="input-row">
+            <input type="text" id="wish-name" placeholder="ឈ្មោះរបស់អ្នក / Your Name" required>
+          </div>
+          <div class="input-row">
+            <textarea id="wish-text" rows="3" placeholder="សូមសរសេរពាក្យជូនពរនៅទីនេះ... / Your warm message..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit-wish">ផ្ញើពាក្យជូនពរ / Send Wishes</button>
+        </form>
+
+        <div class="wishes-feed" id="wishes-feed">
+          <!-- Wishes injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Credit -->
+    <div style="text-align: center; padding: 25px 20px 40px; font-size: 12px; color: var(--text-muted);">
+      <p style="font-family: var(--font-en-title); letter-spacing: 2px;">SOMETH & RACHNA • 25.04.2027</p>
+      <p style="margin-top: 5px;">Created with love for our special day</p>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="bottom-nav">
+      <a href="#section-home" class="nav-btn active">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <span>ដើម</span>
+      </a>
+      <a href="#section-program" class="nav-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
+        <span>កម្មវិធី</span>
+      </a>
+      <a href="#section-location" class="nav-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span>ទីតាំង</span>
+      </a>
+      <a href="#section-gallery" class="nav-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        <span>រូបថត</span>
+      </a>
+      <a href="#section-wishes" class="nav-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        <span>ជូនពរ</span>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox-modal" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Zoomed view">
+  </div>
+
+  <script>
+    // 1. Personalized Guest Name from URL parameter (?to=..., ?guest=..., ?links=...)
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestParam = urlParams.get('to') || urlParams.get('guest') || urlParams.get('name') || urlParams.get('links');
+    if (guestParam) {
+      const cleanGuest = decodeURIComponent(guestParam).replace(/\+/g, ' ');
+      document.getElementById('envelope-guest-name').innerText = cleanGuest;
+      document.getElementById('content-guest-name').innerText = cleanGuest;
+    }
+
+    // 2. Open Invitation
+    document.getElementById('btn-open-invitation').addEventListener('click', function() {
+      document.getElementById('envelope-screen').classList.add('opened');
+      toggleMusic(true);
+    });
+
+    // 3. Ambient Audio Synth (Gentle Wedding Chimes)
+    let audioCtx = null;
+    let isPlaying = false;
+    let chimeInterval = null;
+
+    function playChimeNote(freq, time) {
+      if (!audioCtx) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, time);
+      gain.gain.setValueAtTime(0, time);
+      gain.gain.linearRampToValueAtTime(0.08, time + 0.1);
+      gain.gain.exponentialRampToValueAtTime(0.0001, time + 2.5);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(time);
+      osc.stop(time + 2.5);
+    }
+
+    function startMelody() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      const notes = [523.25, 659.25, 783.99, 1046.50, 880.00, 783.99, 659.25];
+      let step = 0;
+      chimeInterval = setInterval(() => {
+        if (!isPlaying || !audioCtx) return;
+        const now = audioCtx.currentTime;
+        playChimeNote(notes[step % notes.length], now);
+        if (step % 2 === 0) playChimeNote(notes[(step + 2) % notes.length] / 2, now + 0.15);
+        step++;
+      }, 1400);
+    }
+
+    function toggleMusic(forcePlay) {
+      const widget = document.getElementById('music-widget');
+      if (forcePlay === true) {
+        isPlaying = true;
+        widget.classList.add('playing');
+        startMelody();
+        return;
+      }
+      isPlaying = !isPlaying;
+      if (isPlaying) {
+        widget.classList.add('playing');
+        startMelody();
+      } else {
+        widget.classList.remove('playing');
+        clearInterval(chimeInterval);
+      }
+    }
+
+    document.getElementById('music-widget').addEventListener('click', () => toggleMusic());
+
+    // 4. Countdown to April 25, 2027
+    const weddingDate = new Date('2027-04-25T07:00:00+07:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance < 0) {
+        document.getElementById('cd-days').innerText = '00';
+        document.getElementById('cd-hours').innerText = '00';
+        document.getElementById('cd-mins').innerText = '00';
+        document.getElementById('cd-secs').innerText = '00';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+      document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+      document.getElementById('cd-mins').innerText = String(minutes).padStart(2, '0');
+      document.getElementById('cd-secs').innerText = String(seconds).padStart(2, '0');
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // 5. Lightbox
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-modal').style.display = 'flex';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox-modal').style.display = 'none';
+    }
+
+    // 6. Copy Bank
+    function copyAccount(acc) {
+      navigator.clipboard.writeText(acc);
+      alert('បានចម្លងលេខកុងធនាគារដោយជោគជ័យ: ' + acc);
+    }
+
+    // 7. Wishes Guestbook
+    const defaultWishes = [
+      { name: "គណៈគ្រប់គ្រង & មិត្តភក្តិ", msg: "សូមជូនពរឱ្យគូស្វាមីភរិយាថ្មី សោមេធ & រចនា ជួបតែសុភមង្គល ស្រលាញ់គ្នារហូតដល់ចាស់កោងខ្នង!" },
+      { name: "Sokha & Team", msg: "Warmest congratulations to Someth & Rachna on your wedding! Wishing you both a lifetime of eternal love and happiness!" }
+    ];
+
+    function loadWishes() {
+      const stored = JSON.parse(localStorage.getItem('someth_rachna_wishes') || 'null');
+      const list = stored || defaultWishes;
+      const feed = document.getElementById('wishes-feed');
+      feed.innerHTML = list.map(w => `
+        <div class="wish-item">
+          <div class="wish-author">${escapeHtml(w.name)}</div>
+          <div class="wish-message">${escapeHtml(w.msg)}</div>
+        </div>
+      `).join('');
+    }
+
+    function submitWish(e) {
+      e.preventDefault();
+      const name = document.getElementById('wish-name').value.trim();
+      const msg = document.getElementById('wish-text').value.trim();
+      if (!name || !msg) return;
+
+      const stored = JSON.parse(localStorage.getItem('someth_rachna_wishes') || 'null') || defaultWishes;
+      stored.unshift({ name, msg });
+      localStorage.setItem('someth_rachna_wishes', JSON.stringify(stored));
+      
+      document.getElementById('wish-name').value = '';
+      document.getElementById('wish-text').value = '';
+      loadWishes();
+      alert('សូមអរគុណសម្រាប់ពាក្យជូនពរដ៏មានអត្ថន័យ!');
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.innerText = text;
+      return div.innerHTML;
+    }
+
+    loadWishes();
+  </script>
+</body>
+</html>

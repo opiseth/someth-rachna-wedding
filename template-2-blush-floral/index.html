@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Someth & Rachna | Modern Floral Wedding Invitation</title>
+
+  <meta property="og:title" content="The Wedding of Someth & Rachna">
+  <meta property="og:description" content="ពិធីមង្គលការ សោមេធ & រចនា - ថ្ងៃអាទិត្យ ទី២៥ ខែមេសា ឆ្នាំ២០២៧">
+  <meta property="og:image" content="../assets/images/engagement-2.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Kantumruy+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Moul&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --rose-primary: #D47A88;
+      --rose-soft: #FDEEF0;
+      --rose-dark: #6D3440;
+      --champagne: #E8D3B9;
+      --bg-main: #FFF9FA;
+      --text-main: #3D2D31;
+      --text-muted: #8E787C;
+      --font-khmer-title: 'Moul', cursive;
+      --font-khmer-body: 'Kantumruy Pro', sans-serif;
+      --font-script: 'Alex Brush', cursive;
+      --font-en: 'Montserrat', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: #251B1D;
+      color: var(--text-main);
+      font-family: var(--font-khmer-body);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .app-frame {
+      width: 100%;
+      max-width: 440px;
+      min-height: 100vh;
+      background: var(--bg-main);
+      position: relative;
+      overflow-x: hidden;
+      box-shadow: 0 0 60px rgba(0,0,0,0.6);
+    }
+
+    /* Intro Curtain */
+    #curtain-screen {
+      position: fixed;
+      inset: 0;
+      max-width: 440px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #FDF0F2 0%, #F5DEE2 100%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.8s cubic-bezier(0.7, 0, 0.2, 1);
+    }
+
+    #curtain-screen.opened {
+      transform: translateY(-100%);
+      pointer-events: none;
+    }
+
+    .curtain-card {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(212, 122, 136, 0.3);
+      border-radius: 24px;
+      padding: 36px 20px;
+      box-shadow: 0 15px 35px rgba(212, 122, 136, 0.2);
+    }
+
+    .monogram-circle {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FDEEF0 0%, #F2CAD1 100%);
+      border: 2px solid var(--rose-primary);
+      margin: 0 auto 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-script);
+      font-size: 32px;
+      color: var(--rose-dark);
+    }
+
+    .btn-open-flower {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #E28896 0%, #C46070 100%);
+      color: #fff;
+      font-family: var(--font-khmer-body);
+      font-size: 16px;
+      font-weight: 700;
+      padding: 14px 34px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(196, 96, 112, 0.35);
+      animation: floatPulse 2s infinite ease-in-out;
+    }
+
+    @keyframes floatPulse {
+      0%, 100% { transform: translateY(0); box-shadow: 0 8px 24px rgba(196, 96, 112, 0.35); }
+      50% { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(196, 96, 112, 0.45); }
+    }
+
+    /* Floating Music Widget */
+    .music-pill {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 999;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--rose-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(212, 122, 136, 0.25);
+      cursor: pointer;
+    }
+
+    .music-pill.playing svg {
+      animation: rotateFlower 6s linear infinite;
+    }
+
+    @keyframes rotateFlower {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Hero Section */
+    .hero-box {
+      padding: 35px 20px 25px;
+      text-align: center;
+      position: relative;
+    }
+
+    .sub-head {
+      font-family: var(--font-script);
+      font-size: 28px;
+      color: var(--rose-primary);
+      margin-bottom: 2px;
+    }
+
+    .khmer-badge-title {
+      font-family: var(--font-khmer-title);
+      font-size: 16px;
+      color: var(--rose-dark);
+      margin-bottom: 18px;
+    }
+
+    .photo-frame-oval {
+      width: 240px;
+      height: 310px;
+      margin: 0 auto 20px;
+      border-radius: 120px;
+      overflow: hidden;
+      border: 6px solid #FFFFFF;
+      box-shadow: 0 15px 35px rgba(212, 122, 136, 0.25);
+    }
+
+    .photo-frame-oval img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .couple-title-kh {
+      font-family: var(--font-khmer-title);
+      font-size: 24px;
+      color: var(--rose-dark);
+      margin-bottom: 4px;
+    }
+
+    .couple-title-en {
+      font-family: var(--font-en);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--rose-primary);
+      text-transform: uppercase;
+    }
+
+    /* Countdown Section */
+    .floral-cd-card {
+      margin: 15px 20px 25px;
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 22px 16px;
+      text-align: center;
+      border: 1px solid var(--rose-soft);
+      box-shadow: 0 8px 24px rgba(212, 122, 136, 0.1);
+    }
+
+    .cd-date-title {
+      font-family: var(--font-en);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--rose-dark);
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .cd-grid-floral {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 16px 0;
+    }
+
+    .cd-unit {
+      background: var(--rose-soft);
+      border-radius: 12px;
+      padding: 10px 4px;
+    }
+
+    .cd-val {
+      font-family: var(--font-en);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--rose-dark);
+      line-height: 1;
+    }
+
+    .cd-unit-lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    .btn-cal-floral {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--rose-primary);
+      color: #fff;
+      padding: 9px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* Timeline Cards */
+    .section-wrap {
+      padding: 25px 20px;
+    }
+
+    .heading-floral {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .heading-floral h3 {
+      font-family: var(--font-khmer-title);
+      font-size: 18px;
+      color: var(--rose-dark);
+    }
+
+    .heading-floral span {
+      font-family: var(--font-script);
+      font-size: 22px;
+      color: var(--rose-primary);
+      display: block;
+    }
+
+    .event-card {
+      background: #FFFFFF;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(212, 122, 136, 0.15);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.03);
+    }
+
+    .event-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--rose-soft);
+      color: var(--rose-dark);
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
+    .flow-row {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 14px;
+      position: relative;
+    }
+
+    .flow-time {
+      font-family: var(--font-en);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--rose-primary);
+      min-width: 65px;
+    }
+
+    .flow-info h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .flow-info p {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Venue */
+    .venue-card-floral {
+      background: #FFFFFF;
+      border-radius: 18px;
+      padding: 24px 18px;
+      text-align: center;
+      border: 1px solid var(--rose-soft);
+      box-shadow: 0 6px 20px rgba(212, 122, 136, 0.1);
+    }
+
+    .btn-maps-floral {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--rose-primary);
+      color: #fff;
+      padding: 12px 26px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 6px 18px rgba(212, 122, 136, 0.35);
+    }
+
+    /* Gallery */
+    .gallery-masonry {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .gallery-item {
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .gallery-item.wide {
+      grid-column: span 2;
+      aspect-ratio: 16/9;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Gift & Bank */
+    .bank-card-floral {
+      background: linear-gradient(135deg, #FFF0F2 0%, #FFFFFF 100%);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      border: 1px dashed var(--rose-primary);
+    }
+
+    /* Bottom Nav */
+    .bottom-nav {
+      position: sticky;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--rose-soft);
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 4px;
+      z-index: 900;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 600;
+      gap: 2px;
+    }
+
+    .nav-item.active, .nav-item:hover {
+      color: var(--rose-primary);
+    }
+
+    .nav-item svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Modal */
+    #zoom-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 15, 20, 0.92);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    #zoom-modal img {
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-frame">
+
+    <!-- Curtain Screen -->
+    <div id="curtain-screen">
+      <div class="curtain-card">
+        <div class="monogram-circle">S & R</div>
+        <p style="font-family: var(--font-script); font-size: 26px; color: var(--rose-primary); margin-bottom: 4px;">Together in Love</p>
+        <h2 style="font-family: var(--font-khmer-title); font-size: 20px; color: var(--rose-dark); margin-bottom: 12px;">សោមេធ & រចនា</h2>
+        <p style="font-size: 13px; color: var(--text-muted);">សូមគោរពអញ្ជើញ</p>
+        <div style="font-size: 20px; font-weight: 700; color: var(--rose-dark); margin: 6px 0 18px;" id="guest-name-curtain">
+          ឯកឧត្តម លោកជំទាវ លោក លោកស្រី
+        </div>
+        <button class="btn-open-flower" id="btn-open-flower">
+          <span>បើកសំបុត្រមង្គលការ</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Music Widget -->
+    <div class="music-pill" id="music-pill" title="Play Melody">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D47A88" stroke-width="2">
+        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.93V7.07A6 6 0 0 1 13 16.93z"></path>
+      </svg>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero-box" id="top">
+      <div class="sub-head">Wedding Invitation</div>
+      <div class="khmer-badge-title">សិរីសួស្តីអាពាហ៍ពិពាហ៍</div>
+      <div class="photo-frame-oval">
+        <img src="../assets/images/engagement-2.jpg" alt="Someth & Rachna">
+      </div>
+      <div class="couple-title-kh">សោមេធ & រចនា</div>
+      <div class="couple-title-en">Someth & Rachna</div>
+      <p style="margin-top: 10px; font-size: 13px; color: var(--text-muted); line-height: 1.5;">
+        ថ្ងៃអាទិត្យ ទី២៥ ខែមេសា ឆ្នាំ២០២៧<br>
+        សូមគោរពអញ្ជើញ <strong id="guest-name-hero" style="color: var(--rose-dark);">ឯកឧត្តម លោកជំទាវ លោក លោកស្រី</strong>
+      </p>
+    </section>
+
+    <!-- Countdown -->
+    <div class="floral-cd-card">
+      <div class="cd-date-title">SUNDAY • APRIL 25, 2027</div>
+      <div style="font-size: 12px; color: var(--text-muted);">រាប់ថយក្រោយដល់ថ្ងៃពិសេស / Countdown</div>
+      
+      <div class="cd-grid-floral">
+        <div class="cd-unit">
+          <div class="cd-val" id="f-days">00</div>
+          <div class="cd-unit-lbl">Days</div>
+        </div>
+        <div class="cd-unit">
+          <div class="cd-val" id="f-hours">00</div>
+          <div class="cd-unit-lbl">Hours</div>
+        </div>
+        <div class="cd-unit">
+          <div class="cd-val" id="f-mins">00</div>
+          <div class="cd-unit-lbl">Mins</div>
+        </div>
+        <div class="cd-unit">
+          <div class="cd-val" id="f-secs">00</div>
+          <div class="cd-unit-lbl">Secs</div>
+        </div>
+      </div>
+
+      <a class="btn-cal-floral" target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+of+Someth+%26+Rachna&dates=20270425T010000Z/20270425T150000Z&details=Someth+and+Rachna+Wedding&location=Phnom+Penh">
+        🗓️ Save to Calendar
+      </a>
+    </div>
+
+    <!-- Timeline Program -->
+    <section class="section-wrap" id="program">
+      <div class="heading-floral">
+        <h3>កម្មវិធីអាពាហ៍ពិពាហ៍</h3>
+        <span>Wedding Program</span>
+      </div>
+
+      <div class="event-card">
+        <span class="event-badge">🌸 ពេលព្រឹក / Morning Traditions</span>
+        <div class="flow-row">
+          <div class="flow-time">07:00 AM</div>
+          <div class="flow-info">
+            <h4>ជួបជុំភ្ញៀវកិត្តិយស</h4>
+            <p>Welcome morning tea & breakfast</p>
+          </div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-time">07:30 AM</div>
+          <div class="flow-info">
+            <h4>ពិធីហែជំនូនចូលរោងជ័យ</h4>
+            <p>Traditional dowry procession</p>
+          </div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-time">08:30 AM</div>
+          <div class="flow-info">
+            <h4>ពិធីសំពះផ្ទឹម និងចងដៃសិរីសួស្តី</h4>
+            <p>Monk prayers & blessing knot ceremony</p>
+          </div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-time">10:00 AM</div>
+          <div class="flow-info">
+            <h4>ពិធីកាត់សក់បង្កក់សិរី</h4>
+            <p>Hair-cutting ceremony & group photos</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <span class="event-badge">✨ ពេលល្ងាច / Evening Reception</span>
+        <div class="flow-row">
+          <div class="flow-time">05:00 PM</div>
+          <div class="flow-info">
+            <h4>ទទួលភ្ញៀវកិត្តិយស & ថតរូប</h4>
+            <p>Guest welcome & photo shoot</p>
+          </div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-time">06:30 PM</div>
+          <div class="flow-info">
+            <h4>ពិធីពិសាភោជនាហារ និងកាត់នំ</h4>
+            <p>Dinner banquet & cake cutting</p>
+          </div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-time">08:30 PM</div>
+          <div class="flow-info">
+            <h4>រាំកម្សាន្ត & អរគុណភ្ញៀវកិត្តិយស</h4>
+            <p>Celebration dance & music</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Venue -->
+    <section class="section-wrap" id="location" style="background: var(--rose-soft);">
+      <div class="heading-floral">
+        <h3>ទីតាំងកម្មវិធី</h3>
+        <span>Location & Map</span>
+      </div>
+      <div class="venue-card-floral">
+        <h4 style="font-size: 18px; color: var(--rose-dark); margin-bottom: 6px;">Someth & Rachna Wedding Hall</h4>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 18px;">
+          រាជធានីភ្នំពេញ / Phnom Penh, Cambodia
+        </p>
+        <a class="btn-maps-floral" target="_blank" href="https://www.google.com/maps?q=place_id:ChIJnW1xo-lRCTERQk28WazEhaY">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span>បើកមើលទីតាំង Google Maps</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section-wrap" id="gallery">
+      <div class="heading-floral">
+        <h3>រូបថតអនុស្សាវរីយ៍</h3>
+        <span>Photo Moments</span>
+      </div>
+      <div class="gallery-masonry">
+        <div class="gallery-item wide" onclick="showZoom('../assets/images/engagement-4.jpg')">
+          <img src="../assets/images/engagement-4.jpg" alt="Engagement 4">
+        </div>
+        <div class="gallery-item" onclick="showZoom('../assets/images/engagement-1.jpg')">
+          <img src="../assets/images/engagement-1.jpg" alt="Engagement 1">
+        </div>
+        <div class="gallery-item" onclick="showZoom('../assets/images/engagement-3.jpg')">
+          <img src="../assets/images/engagement-3.jpg" alt="Engagement 3">
+        </div>
+        <div class="gallery-item" onclick="showZoom('../assets/images/engagement-5.jpg')">
+          <img src="../assets/images/engagement-5.jpg" alt="Engagement 5">
+        </div>
+        <div class="gallery-item" onclick="showZoom('../assets/images/engagement-6.jpg')">
+          <img src="../assets/images/engagement-6.jpg" alt="Engagement 6">
+        </div>
+        <div class="gallery-item wide" onclick="showZoom('../assets/images/engagement-7.jpg')">
+          <img src="../assets/images/engagement-7.jpg" alt="Engagement 7">
+        </div>
+        <div class="gallery-item" onclick="showZoom('../assets/images/engagement-8.jpg')">
+          <img src="../assets/images/engagement-8.jpg" alt="Engagement 8">
+        </div>
+        <div class="gallery-item" onclick="showZoom('../assets/images/engagement-9.jpg')">
+          <img src="../assets/images/engagement-9.jpg" alt="Engagement 9">
+        </div>
+      </div>
+    </section>
+
+    <!-- Gift -->
+    <section class="section-wrap" id="gift">
+      <div class="bank-card-floral">
+        <h4 style="font-family: var(--font-khmer-title); font-size: 16px; color: var(--rose-dark); margin-bottom: 4px;">ចំណងដៃអាពាហ៍ពិពាហ៍</h4>
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px;">ABA BANK / KHQR</p>
+        <div style="font-family: monospace; font-size: 18px; font-weight: 700; color: var(--rose-dark); margin-bottom: 4px;">001 888 2504</div>
+        <div style="font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 12px;">SOMETH & RACHNA</div>
+        <button style="background: var(--rose-primary); color: #fff; border:none; padding: 6px 18px; border-radius: 20px; font-size: 12px; cursor: pointer;" onclick="navigator.clipboard.writeText('0018882504'); alert('ចម្លងលេខកុងបានជោគជ័យ!');">📋 Copy Account</button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div style="text-align: center; padding: 20px; font-size: 11px; color: var(--text-muted);">
+      <p style="font-family: var(--font-en); letter-spacing: 2px;">SOMETH & RACHNA • 25.04.2027</p>
+    </div>
+
+    <!-- Nav -->
+    <div class="bottom-nav">
+      <a href="#top" class="nav-item active">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <span>ដើម</span>
+      </a>
+      <a href="#program" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
+        <span>កម្មវិធី</span>
+      </a>
+      <a href="#location" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span>ទីតាំង</span>
+      </a>
+      <a href="#gallery" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        <span>រូបថត</span>
+      </a>
+    </div>
+
+  </div>
+
+  <div id="zoom-modal" onclick="this.style.display='none'">
+    <img id="zoom-img" src="" alt="Zoom">
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const guest = params.get('to') || params.get('guest') || params.get('links');
+    if (guest) {
+      const clean = decodeURIComponent(guest).replace(/\+/g, ' ');
+      document.getElementById('guest-name-curtain').innerText = clean;
+      document.getElementById('guest-name-hero').innerText = clean;
+    }
+
+    document.getElementById('btn-open-flower').addEventListener('click', function() {
+      document.getElementById('curtain-screen').classList.add('opened');
+      toggleMusic(true);
+    });
+
+    // Audio
+    let audioCtx = null, isPlaying = false, timer = null;
+    function playSoftHarp() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const scale = [440, 493.88, 554.37, 659.25, 739.99, 880];
+      let i = 0;
+      timer = setInterval(() => {
+        if (!isPlaying || !audioCtx) return;
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        osc.frequency.setValueAtTime(scale[i % scale.length], now);
+        g.gain.setValueAtTime(0, now);
+        g.gain.linearRampToValueAtTime(0.06, now + 0.05);
+        g.gain.exponentialRampToValueAtTime(0.0001, now + 1.8);
+        osc.connect(g);
+        g.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 1.8);
+        i++;
+      }, 1200);
+    }
+
+    function toggleMusic(play) {
+      const p = document.getElementById('music-pill');
+      if (play === true) {
+        isPlaying = true; p.classList.add('playing'); playSoftHarp(); return;
+      }
+      isPlaying = !isPlaying;
+      if (isPlaying) { p.classList.add('playing'); playSoftHarp(); }
+      else { p.classList.remove('playing'); clearInterval(timer); }
+    }
+    document.getElementById('music-pill').addEventListener('click', () => toggleMusic());
+
+    // Countdown
+    const target = new Date('2027-04-25T07:00:00+07:00').getTime();
+    function count() {
+      const diff = target - new Date().getTime();
+      if (diff > 0) {
+        document.getElementById('f-days').innerText = String(Math.floor(diff / 86400000)).padStart(2, '0');
+        document.getElementById('f-hours').innerText = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+        document.getElementById('f-mins').innerText = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+        document.getElementById('f-secs').innerText = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+      }
+    }
+    setInterval(count, 1000);
+    count();
+
+    function showZoom(src) {
+      document.getElementById('zoom-img').src = src;
+      document.getElementById('zoom-modal').style.display = 'flex';
+    }
+  </script>
+</body>
+</html>

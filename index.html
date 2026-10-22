@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Someth & Rachna Wedding Invitation Templates | ២៥ មេសា ២០២៧</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Kantumruy+Pro:wght@400;600;700&family=Moul&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #0f1418;
+      color: #f0ede8;
+      font-family: 'Kantumruy Pro', sans-serif;
+      padding: 40px 20px 80px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .badge-sub {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(229, 190, 126, 0.15);
+      border: 1px solid rgba(229, 190, 126, 0.35);
+      border-radius: 30px;
+      color: #E5BE7E;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: 'Moul', cursive;
+      font-size: 32px;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      color: #E5BE7E;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .info-summary {
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 16px 20px;
+      font-size: 14px;
+      color: #c7bebe;
+      line-height: 1.6;
+    }
+
+    /* Guest link customizer */
+    .guest-customizer {
+      max-width: 650px;
+      margin: 35px auto 45px;
+      background: #172129;
+      border: 1px solid #283a48;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .customizer-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #E5BE7E;
+      margin-bottom: 6px;
+    }
+
+    .customizer-box {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .customizer-box input {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid #374e60;
+      background: #0d151a;
+      color: #fff;
+      font-family: 'Kantumruy Pro', sans-serif;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .customizer-box button {
+      padding: 12px 24px;
+      border-radius: 10px;
+      background: #E5BE7E;
+      color: #122028;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Template Cards Grid */
+    .templates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .template-card {
+      background: #151d24;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .template-card:hover {
+      transform: translateY(-6px);
+      border-color: #E5BE7E;
+    }
+
+    .preview-frame-wrap {
+      width: 100%;
+      height: 480px;
+      background: #000;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .preview-frame-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      pointer-events: none;
+    }
+
+    .card-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tpl-num {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #E5BE7E;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .tpl-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .tpl-desc {
+      font-size: 14px;
+      color: #a8a09b;
+      line-height: 1.5;
+      margin-bottom: 18px;
+      flex: 1;
+    }
+
+    .features-list {
+      list-style: none;
+      font-size: 13px;
+      color: #ded7ce;
+      margin-bottom: 20px;
+    }
+
+    .features-list li {
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-view {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #C5A059 0%, #E3CDA0 50%, #9E7A36 100%);
+      color: #1A1715;
+    }
+
+    .btn-rose {
+      background: linear-gradient(135deg, #E28896 0%, #C46070 100%);
+      color: #ffffff;
+    }
+
+    .btn-sapphire {
+      background: linear-gradient(135deg, #2b495c 0%, #172c38 100%);
+      color: #E5BE7E;
+      border: 1px solid #E5BE7E;
+    }
+
+    .btn-view:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      font-size: 13px;
+      color: #726b66;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="badge-sub">WEDDING INVITATION TEMPLATE SHOWCASE</div>
+      <h1>គំរូសំបុត្រអាពាហ៍ពិពាហ៍បែបគេហទំព័រ</h1>
+      <div class="subtitle">SOMETH & RACHNA • APRIL 25, 2027</div>
+      
+      <div class="info-summary">
+        ✨ បានចម្រាញ់ចេញពីគំរូ <strong>Canva Engagement Site</strong> និងរចនាបថ <strong>Sambot.online</strong><br>
+        • កាលបរិច្ឆេទមង្គលការ៖ <strong>ថ្ងៃអាទិត្យ ទី២៥ ខែមេសា ឆ្នាំ២០២៧</strong><br>
+        • ទីតាំង៖ <strong>រាជធានីភ្នំពេញ (ភ្ជាប់ Google Maps ផ្ទាល់)</strong><br>
+        • លក្ខណៈពិសេស៖ បើកសំបុត្រមានចលនា, ចាក់ភ្លេង, រាប់ថយក្រោយ, កម្រងរូបថត, ABA KHQR, និងពាក្យជូនពរ
+      </div>
+    </header>
+
+    <!-- Guest Name Generator -->
+    <div class="guest-customizer">
+      <div class="customizer-title">🎯 សាកល្បងដាក់ឈ្មោះភ្ញៀវផ្ទាល់ខ្លួន (Personalized Guest Link)</div>
+      <p style="font-size: 13px; color: #a4b3be;">
+        វាយឈ្មោះភ្ញៀវកិត្តិយសខាងក្រោមដើម្បីសាកល្បងមើលលើគំរូនីមួយៗ៖
+      </p>
+      <div class="customizer-box">
+        <input type="text" id="guest-input" placeholder="ឧទាហរណ៍៖ ឯកឧត្តម លី សុខា ឬ Lok Chumteav Dara" value="ឯកឧត្តម លោកជំទាវ លោក លោកស្រី">
+        <button onclick="applyGuestName()">សាកល្បង (Test)</button>
+      </div>
+    </div>
+
+    <!-- Templates Grid -->
+    <div class="templates-grid">
+      
+      <!-- Template 1 -->
+      <div class="template-card">
+        <div class="preview-frame-wrap">
+          <iframe id="iframe-1" src="template-1-royal-gold/index.html"></iframe>
+        </div>
+        <div class="card-body">
+          <div class="tpl-num">Template 01</div>
+          <div class="tpl-name">Luxury Royal Gold & Champagne</div>
+          <div class="tpl-desc">
+            រចនាបថមាសឆើតឆាយ បែបព្រះរាជពិធីប្រពៃណីខ្មែរបូកបញ្ចូលសម័យទំនើប។ មានត្រាស្នាមបើកសំបុត្រ និងតារាងកម្មវិធីលម្អិត។
+          </div>
+          <ul class="features-list">
+            <li>✨ ស្រោមសំបុត្រមានត្រា S&R និងប៊ូតុងបើក</li>
+            <li>🎵 ចាក់បទភ្លេងរ៉ូមែនទិកអណ្តែតលើអេក្រង់</li>
+            <li>⏳ នាឡិការាប់ថយក្រោយដល់ ២៥ មេសា ២០២៧</li>
+            <li>🎁 ប្រអប់ ABA KHQR & ជញ្ជាំងជូនពរ Guestbook</li>
+          </ul>
+          <a id="link-1" class="btn-view btn-gold" href="template-1-royal-gold/index.html" target="_blank">
+            បើកមើលគំរូទី ១ (Open Preview)
+          </a>
+        </div>
+      </div>
+
+      <!-- Template 2 -->
+      <div class="template-card">
+        <div class="preview-frame-wrap">
+          <iframe id="iframe-2" src="template-2-blush-floral/index.html"></iframe>
+        </div>
+        <div class="card-body">
+          <div class="tpl-num">Template 02</div>
+          <div class="tpl-name">Modern Blush Rose & Floral</div>
+          <div class="tpl-desc">
+            រចនាបថផ្កាផ្កាឈូកស្រាល ទន់ភ្លន់ និងផ្អែមល្ហែម ស័ក្តិសមបំផុតសម្រាប់គូស្នេហ៍បែបយុវវ័យសម័យថ្មី ស្រស់ស្រាយ និងរស់រវើក។
+          </div>
+          <ul class="features-list">
+            <li>🌸 គំនូសព្រំ និងផ្កាអណ្តែតបែបធម្មជាតិ</li>
+            <li>🖼️ ស៊ុមរូបថតរាងពងក្រពើ និងអាល់ប៊ុមស្អាតប្លែក</li>
+            <li>📅 កាលវិភាគព្រឹក-ល្ងាច រៀបរយយ៉ាងប្រណីត</li>
+            <li>📍 ផែនទី Google Maps ចុចទៅដល់កន្លែងភ្លាម</li>
+          </ul>
+          <a id="link-2" class="btn-view btn-rose" href="template-2-blush-floral/index.html" target="_blank">
+            បើកមើលគំរូទី ២ (Open Preview)
+          </a>
+        </div>
+      </div>
+
+      <!-- Template 3 -->
+      <div class="template-card">
+        <div class="preview-frame-wrap">
+          <iframe id="iframe-3" src="template-3-midnight-sapphire/index.html"></iframe>
+        </div>
+        <div class="card-body">
+          <div class="tpl-num">Template 03</div>
+          <div class="tpl-name">Midnight Sapphire & Ivory</div>
+          <div class="tpl-desc">
+            រចនាបថ Editorial ទស្សនាវដ្តីអន្តរជាតិ ដោយប្រើពណ៌ចម្បងដែលដកស្រង់ផ្ទាល់ពីគេហទំព័រភ្ជាប់ពាក្យ Canva របស់គូស្វាមីភរិយា។
+          </div>
+          <ul class="features-list">
+            <li>🌌 ពណ៌ខៀវ Midnight Navy & ពណ៌ Ivory ស្រទន់</li>
+            <li>📖 Layout បែប Vogue Magazine Editorial</li>
+            <li>✨ ផ្ទាំងបើក Cinematic Gate ដ៏ទាក់ទាញ</li>
+            <li>📱 Navigation Bar ងាយស្រួលចុចលើទូរសព្ទដៃ</li>
+          </ul>
+          <a id="link-3" class="btn-view btn-sapphire" href="template-3-midnight-sapphire/index.html" target="_blank">
+            បើកមើលគំរូទី ៣ (Open Preview)
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <p>Prepared for Someth & Rachna Wedding Celebration • April 25, 2027</p>
+      <p style="margin-top: 5px;">Ready to deploy to Cloudflare Pages, GitHub Pages, or Vercel</p>
+    </footer>
+  </div>
+
+  <script>
+    function applyGuestName() {
+      const name = document.getElementById('guest-input').value.trim();
+      const encoded = encodeURIComponent(name);
+
+      const url1 = `template-1-royal-gold/index.html?to=${encoded}`;
+      const url2 = `template-2-blush-floral/index.html?to=${encoded}`;
+      const url3 = `template-3-midnight-sapphire/index.html?to=${encoded}`;
+
+      document.getElementById('link-1').href = url1;
+      document.getElementById('link-2').href = url2;
+      document.getElementById('link-3').href = url3;
+
+      document.getElementById('iframe-1').src = url1;
+      document.getElementById('iframe-2').src = url2;
+      document.getElementById('iframe-3').src = url3;
+    }
+  </script>
+</body>
+</html>
