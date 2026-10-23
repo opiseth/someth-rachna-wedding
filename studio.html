@@ -584,7 +584,52 @@
         </div>
       </div>
 
-      <!-- 5. Bank / Cash Gift -->
+      <!-- 5. Music & Song Selection -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-header-title">
+            <span>🎵</span> ជ្រើសរើសបទចម្រៀង / ភ្លេងការ (Background Music & Song)
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="form-group">
+            <label class="form-label">ប្រភពបទភ្លេង / Music Source</label>
+            <select class="form-control" id="musicSourceSelect" onchange="handleMusicSourceChange(this.value)">
+              <option value="chimes">🔔 ភ្លេងពិរោះរណ្តំ (Built-in Harmonic Chimes & Bells)</option>
+              <option value="canon">🎻 Canon in D - Pachelbel (Romantic Strings/Piano)</option>
+              <option value="clair">🌙 Clair de Lune - Debussy (Soft Classical Melody)</option>
+              <option value="upload">📁 ផ្ទុកឡើងបទចម្រៀង MP3 ផ្ទាល់ខ្លួន (Upload your own MP3 file)</option>
+              <option value="url">🔗 បិទភ្ជាប់តំណភ្ជាប់ MP3 URL (Custom Audio URL)</option>
+            </select>
+          </div>
+
+          <!-- Upload Input -->
+          <div class="form-group" id="musicUploadGroup" style="display: none; margin-top: 14px;">
+            <label class="form-label">ជ្រើសរើសឯកសារចម្រៀង (.mp3 / .m4a)</label>
+            <div class="photo-drop-zone" onclick="document.getElementById('audioFileInput').click()">
+              <input type="file" id="audioFileInput" accept="audio/*" style="display: none;" onchange="handleAudioUpload(this)">
+              <div id="audioUploadText">🎵 ចុចត្រង់នេះដើម្បីជ្រើសបទចម្រៀងពីទូរសព្ទ/កុំព្យូទ័រ</div>
+            </div>
+          </div>
+
+          <!-- URL Input -->
+          <div class="form-group" id="musicUrlGroup" style="display: none; margin-top: 14px;">
+            <label class="form-label">តំណភ្ជាប់ឯកសារ MP3 (Direct MP3 URL)</label>
+            <input type="text" class="form-control" id="customAudioUrl" placeholder="https://example.com/song.mp3" oninput="handleAudioUrlInput(this.value)">
+          </div>
+
+          <!-- Audio Player Preview in Studio -->
+          <div style="margin-top: 16px; padding: 12px 16px; background: var(--bg-input); border-radius: 10px; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: #fff;" id="nowPlayingTitle">🔔 Built-in Harmonic Chimes</div>
+              <div style="font-size: 11px; color: var(--text-muted);" id="nowPlayingSubtitle">Ambient synthesis melody</div>
+            </div>
+            <button class="btn-header" id="btnTestAudio" onclick="toggleTestAudio()" style="background: var(--gold); color: #12100E; border: none; font-weight: 700;">▶️ ស្តាប់សាកល្បង (Test Play)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Bank / Cash Gift -->
       <div class="form-section">
         <div class="section-header">
           <div class="section-header-title">
@@ -671,6 +716,8 @@
       bankName: "ABA BANK / KHQR",
       bankAccount: "001 888 2504",
       bankOwner: "SOMETH & RACHNA",
+      musicType: "chimes",
+      audioUrl: "",
       heroPhoto: "../assets/images/engagement-1.jpg",
       galleryPhotos: [
         "../assets/images/engagement-4.jpg",
@@ -712,8 +759,105 @@
       document.getElementById('bankAccount').value = currentConfig.bankAccount;
       document.getElementById('bankOwner').value = currentConfig.bankOwner;
 
+      // Music init
+      const mType = currentConfig.musicType || 'chimes';
+      document.getElementById('musicSourceSelect').value = mType;
+      handleMusicSourceChange(mType, false);
+      if (currentConfig.audioUrl && mType === 'url') {
+        document.getElementById('customAudioUrl').value = currentConfig.audioUrl;
+      }
+
       renderTimelineEditors();
       renderGalleryThumbs();
+    }
+
+    const musicPresets = {
+      chimes: { title: "🔔 Built-in Harmonic Chimes", sub: "Ambient synthesis melody", url: "" },
+      canon: { title: "🎻 Canon in D - Pachelbel", sub: "Romantic Strings & Piano", url: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Johann_Pachelbel_Canon_P_37_1694.mp3" },
+      clair: { title: "🌙 Clair de Lune - Debussy", sub: "Soft Classical Melody", url: "https://upload.wikimedia.org/wikipedia/commons/2/25/Clair_de_Lune_-_Wright_Brass_-_United_States_Air_Force_Band_of_Flight.mp3" },
+      upload: { title: "📁 Custom Uploaded MP3", sub: "Your custom song file", url: "" },
+      url: { title: "🔗 Custom MP3 Link", sub: "Audio stream URL", url: "" }
+    };
+
+    let testAudioPlayer = new Audio();
+    let isTestingAudio = false;
+
+    function handleMusicSourceChange(val, triggerSave = true) {
+      currentConfig.musicType = val;
+      const upGroup = document.getElementById('musicUploadGroup');
+      const urlGroup = document.getElementById('musicUrlGroup');
+
+      upGroup.style.display = (val === 'upload') ? 'block' : 'none';
+      urlGroup.style.display = (val === 'url') ? 'block' : 'none';
+
+      if (val in musicPresets && val !== 'upload' && val !== 'url') {
+        currentConfig.audioUrl = musicPresets[val].url;
+      }
+
+      const preset = musicPresets[val] || musicPresets.chimes;
+      document.getElementById('nowPlayingTitle').innerText = preset.title;
+      document.getElementById('nowPlayingSubtitle').innerText = preset.sub;
+
+      stopTestAudio();
+      if (triggerSave) saveAndApply(false);
+    }
+
+    function handleAudioUpload(input) {
+      if (!input.files || !input.files[0]) return;
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        currentConfig.audioUrl = e.target.result;
+        currentConfig.musicType = 'upload';
+        document.getElementById('audioUploadText').innerHTML = '✅ បានជ្រើសបទចម្រៀង: <strong>' + escapeHtml(file.name) + '</strong>';
+        document.getElementById('nowPlayingTitle').innerText = '🎵 ' + file.name;
+        document.getElementById('nowPlayingSubtitle').innerText = 'Custom uploaded audio file';
+        stopTestAudio();
+        saveAndApply(true);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handleAudioUrlInput(val) {
+      currentConfig.audioUrl = val.trim();
+      currentConfig.musicType = 'url';
+      stopTestAudio();
+      saveAndApply(false);
+    }
+
+    function toggleTestAudio() {
+      const btn = document.getElementById('btnTestAudio');
+      if (isTestingAudio) {
+        stopTestAudio();
+        return;
+      }
+      const url = currentConfig.audioUrl;
+      if (!url) {
+        alert('បទភ្លេង "Harmonic Chimes" ត្រូវបានចាក់ដោយស្វ័យប្រវត្តិតាមរយៈ Web Audio Synthesizer នៅក្នុងសំបុត្រអញ្ជើញ!');
+        return;
+      }
+      testAudioPlayer.src = url;
+      testAudioPlayer.play().then(() => {
+        isTestingAudio = true;
+        btn.innerText = '⏸️ ផ្អាក (Pause)';
+        btn.style.background = '#F87171';
+        btn.style.color = '#fff';
+      }).catch(err => {
+        alert('មិនអាចចាក់បទចម្រៀងបានទេ៖ ' + err.message);
+      });
+
+      testAudioPlayer.onended = () => stopTestAudio();
+    }
+
+    function stopTestAudio() {
+      testAudioPlayer.pause();
+      isTestingAudio = false;
+      const btn = document.getElementById('btnTestAudio');
+      if (btn) {
+        btn.innerText = '▶️ ស្តាប់សាកល្បង (Test Play)';
+        btn.style.background = 'var(--gold)';
+        btn.style.color = '#12100E';
+      }
     }
 
     function renderTimelineEditors() {
