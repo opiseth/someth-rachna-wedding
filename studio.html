@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Invitation Studio | កន្លែងរៀបចំសំបុត្រមង្គលការដោយខ្លួនឯង</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Kantumruy+Pro:wght@300;400;600;700&family=Moul&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #0B0F12;
+      --bg-panel: #131A20;
+      --bg-card: #1B242C;
+      --bg-input: #0F161B;
+      --border-color: #273440;
+      --gold: #E5BE7E;
+      --gold-dark: #C5A059;
+      --text-main: #F3F4F6;
+      --text-muted: #9CA3AF;
+      --accent-blue: #38BDF8;
+      --accent-green: #34D399;
+      --accent-red: #F87171;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Kantumruy Pro', sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Top Navigation Bar */
+    header {
+      height: 64px;
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      flex-shrink: 0;
+      z-index: 100;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-badge {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      color: #12100E;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .brand-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .brand-subtitle {
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-header {
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-main);
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-header:hover {
+      background: var(--border-color);
+    }
+
+    .btn-save-main {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      color: #12100E;
+      border: none;
+      font-weight: 700;
+    }
+
+    .btn-save-main:hover {
+      opacity: 0.95;
+    }
+
+    /* Main Workspace Layout */
+    .workspace-wrap {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* Left Side: Editor Form */
+    .editor-pane {
+      width: 58%;
+      height: 100%;
+      overflow-y: auto;
+      padding: 30px;
+      background: var(--bg-panel);
+      border-right: 1px solid var(--border-color);
+    }
+
+    /* Right Side: Live Device Mockup */
+    .preview-pane {
+      width: 42%;
+      height: 100%;
+      background: #080B0E;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    .preview-toolbar {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      font-size: 13px;
+    }
+
+    .theme-select {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: 'Kantumruy Pro', sans-serif;
+      font-size: 13px;
+      outline: none;
+    }
+
+    /* Mobile Phone Mockup */
+    .phone-mockup {
+      width: 380px;
+      height: 740px;
+      background: #000;
+      border-radius: 46px;
+      border: 10px solid #232B32;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 0 2px rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .phone-speaker-bar {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110px;
+      height: 22px;
+      background: #111;
+      border-radius: 14px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .phone-speaker-camera {
+      width: 10px;
+      height: 10px;
+      background: #1e293b;
+      border-radius: 50%;
+    }
+
+    .phone-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #fff;
+    }
+
+    /* Form Accordions & Sections */
+    .form-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .section-header {
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.02);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .section-header-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-body {
+      padding: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #E2E8F0;
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: #fff;
+      font-family: 'Kantumruy Pro', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: var(--gold);
+    }
+
+    .helper-text {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Dynamic Timeline Row */
+    .timeline-edit-item {
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .btn-remove-row {
+      background: rgba(248, 113, 113, 0.15);
+      color: var(--accent-red);
+      border: 1px solid rgba(248, 113, 113, 0.3);
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .btn-add-row {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px dashed var(--accent-blue);
+      color: var(--accent-blue);
+      padding: 10px;
+      border-radius: 8px;
+      width: 100%;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    /* Photo Uploader / Preview */
+    .photo-drop-zone {
+      border: 2px dashed var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      background: var(--bg-input);
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .photo-drop-zone:hover {
+      border-color: var(--gold);
+    }
+
+    .gallery-preview-strip {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      margin-top: 14px;
+      padding-bottom: 6px;
+    }
+
+    .thumb-preview-box {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      position: relative;
+      border: 1px solid var(--border-color);
+    }
+
+    .thumb-preview-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Guest List Generator Box */
+    .guest-bulk-box textarea {
+      width: 100%;
+      min-height: 110px;
+      padding: 12px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: #fff;
+      font-family: 'Kantumruy Pro', sans-serif;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .generated-links-table {
+      margin-top: 15px;
+      max-height: 220px;
+      overflow-y: auto;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+    }
+
+    .link-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      font-size: 12px;
+      border-bottom: 1px solid var(--border-color);
+      background: var(--bg-input);
+    }
+
+    .link-row:last-child {
+      border-bottom: none;
+    }
+
+    .btn-copy-sm {
+      background: var(--gold);
+      color: #12100E;
+      border: none;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #10B981;
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+      z-index: 9999;
+    }
+
+    #toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header>
+    <div class="brand-wrap">
+      <div class="brand-badge">S&R</div>
+      <div>
+        <div class="brand-title">Wedding Invitation Studio</div>
+        <div class="brand-subtitle">កន្លែងកែសម្រួលសំបុត្រមង្គលការដោយខ្លួនឯង</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button class="btn-header" onclick="resetDefaults()">🔄 កំណត់ដើម (Reset)</button>
+      <button class="btn-header" onclick="exportConfigJson()">💾 ទាញយកទិន្នន័យ (Backup JSON)</button>
+      <a class="btn-header" id="fullscreen-view-btn" href="template-1-royal-gold/" target="_blank">↗️ មើលពេញអេក្រង់ (Full Page)</a>
+      <button class="btn-header btn-save-main" onclick="saveAndApply()">✨ រក្សាទុក & អាប់ដេត (Save & Apply)</button>
+    </div>
+  </header>
+
+  <!-- Workspace Container -->
+  <div class="workspace-wrap">
+
+    <!-- Left: Form Controls -->
+    <div class="editor-pane">
+
+      <!-- 1. Couple & Event Names -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-header-title">
+            <span>💑</span> ព័ត៌មានគូស្វាមីភរិយា & កាលបរិច្ឆេទ (Couple & Date)
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">ឈ្មោះកូនកំលោះ (Khmer)</label>
+              <input type="text" class="form-control" id="groomKhmer" value="សុមេត" oninput="liveUpdate()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">ឈ្មោះកូនកំលោះ (English)</label>
+              <input type="text" class="form-control" id="groomEn" value="Someth" oninput="liveUpdate()">
+            </div>
+          </div>
+
+          <div class="grid-2" style="margin-top: 12px;">
+            <div class="form-group">
+              <label class="form-label">ឈ្មោះកូនក្រមុំ (Khmer)</label>
+              <input type="text" class="form-control" id="brideKhmer" value="រចនា" oninput="liveUpdate()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">ឈ្មោះកូនក្រមុំ (English)</label>
+              <input type="text" class="form-control" id="brideEn" value="Rachna" oninput="liveUpdate()">
+            </div>
+          </div>
+
+          <div class="grid-2" style="margin-top: 12px;">
+            <div class="form-group">
+              <label class="form-label">ថ្ងៃរៀបអាពាហ៍ពិពាហ៍ (Wedding Date)</label>
+              <input type="date" class="form-control" id="weddingDate" value="2027-04-25" oninput="liveUpdate()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">កាលបរិច្ឆេទអក្សរខ្មែរ (Khmer Date Text)</label>
+              <input type="text" class="form-control" id="weddingDateKhmer" value="ថ្ងៃអាទិត្យ ទី២៥ ខែមេសា ឆ្នាំ២០២៧" oninput="liveUpdate()">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Morning & Evening Schedule -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-header-title">
+            <span>🗓️</span> របៀបវារៈកម្មវិធីព្រឹក និងល្ងាច (Schedule / Timeline)
+          </div>
+        </div>
+        <div class="section-body">
+          <h4 style="font-size: 14px; color: var(--gold); margin-bottom: 10px;">🌅 កម្មវិធីពេលព្រឹក (Morning Ceremony)</h4>
+          <div id="morning-events-wrap">
+            <!-- Dynamic items -->
+          </div>
+          <button class="btn-add-row" onclick="addScheduleItem('morning')">+ បន្ថែមកម្មវិធីព្រឹក (Add Morning Event)</button>
+
+          <h4 style="font-size: 14px; color: var(--accent-blue); margin: 20px 0 10px;">🌙 កម្មវិធីពេលល្ងាច (Evening Banquet)</h4>
+          <div id="evening-events-wrap">
+            <!-- Dynamic items -->
+          </div>
+          <button class="btn-add-row" onclick="addScheduleItem('evening')">+ បន្ថែមកម្មវិធីល្ងាច (Add Evening Event)</button>
+        </div>
+      </div>
+
+      <!-- 3. Venue & Location -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-header-title">
+            <span>📍</span> ទីតាំងកម្មវិធី & Google Maps (Venue Location)
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="form-group">
+            <label class="form-label">ឈ្មោះទីតាំង / អាគាររៀបអាពាហ៍ពិពាហ៍</label>
+            <input type="text" class="form-control" id="venueName" value="Someth & Rachna Wedding Hall, Phnom Penh" oninput="liveUpdate()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">អាសយដ្ឋាន / Address Details</label>
+            <input type="text" class="form-control" id="venueAddress" value="រាជធានីភ្នំពេញ / Phnom Penh, Cambodia" oninput="liveUpdate()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">តំណភ្ជាប់ Google Maps Link</label>
+            <input type="text" class="form-control" id="venueMapUrl" value="https://www.google.com/maps?q=place_id:ChIJnW1xo-lRCTERQk28WazEhaY" oninput="liveUpdate()">
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Photo Uploader -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-header-title">
+            <span>📸</span> រូបថតក្របទំព័រ និងកម្រងរូបភាព (Cover & Gallery Photos)
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="form-group">
+            <label class="form-label">រូបថតកូនកំលោះ-កូនក្រមុំធំ (Hero Cover Portrait)</label>
+            <div class="photo-drop-zone" onclick="document.getElementById('heroFileInput').click()">
+              <input type="file" id="heroFileInput" accept="image/*" style="display: none;" onchange="handleHeroUpload(this)">
+              <div id="heroPhotoPreviewText">📁 ចុចត្រង់នេះដើម្បីជ្រើសរូបថត Cover ថ្មីពីកុំព្យូទ័រ/ទូរសព្ទ</div>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top: 18px;">
+            <label class="form-label">បន្ថែមរូបថតក្នុង Gallery (Sweet Moments)</label>
+            <div class="photo-drop-zone" onclick="document.getElementById('galleryFileInput').click()">
+              <input type="file" id="galleryFileInput" accept="image/*" multiple style="display: none;" onchange="handleGalleryUpload(this)">
+              <div>🖼️ ចុចដើម្បីបន្ថែមរូបថត Gallery ចូល (ជ្រើសបានច្រើនសន្លឹក)</div>
+            </div>
+            <div class="gallery-preview-strip" id="galleryPreviewStrip">
+              <!-- Thumbnails -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Bank / Cash Gift -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-header-title">
+            <span>🎁</span> ចំណងដៃអាពាហ៍ពិពាហ៍ / ធនាគារ (Cash Blessing / Bank)
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">ឈ្មោះធនាគារ (Bank Name)</label>
+              <input type="text" class="form-control" id="bankName" value="ABA BANK / KHQR" oninput="liveUpdate()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">លេខគណនី (Account Number)</label>
+              <input type="text" class="form-control" id="bankAccount" value="001 888 2504" oninput="liveUpdate()">
+            </div>
+          </div>
+          <div class="form-group" style="margin-top: 12px;">
+            <label class="form-label">ឈ្មោះម្ចាស់គណនី (Account Name)</label>
+            <input type="text" class="form-control" id="bankOwner" value="SOMETH & RACHNA" oninput="liveUpdate()">
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Bulk Guest Links Generator -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-header-title">
+            <span>👥</span> បង្កើតតំណភ្ជាប់ភ្ញៀវរាប់រយនាក់ (Bulk Guest List Generator)
+          </div>
+        </div>
+        <div class="section-body guest-bulk-box">
+          <label class="form-label">បិទភ្ជាប់ (Paste) បញ្ជីឈ្មោះភ្ញៀវ (មួយជួរឈ្មោះម្នាក់)៖</label>
+          <textarea id="bulkGuestInput" placeholder="ឯកឧត្តម លី សុខា&#10;លោកជំទាវ បុប្ផា&#10;លោក សួន សុភ័ក្រ្&#10;Dara & Family"></textarea>
+          <button class="btn-add-row" onclick="generateBulkLinks()" style="margin-top: 8px;">🚀 បង្កើតតំណភ្ជាប់ជូនភ្ញៀវទាំងអស់ (Generate Links)</button>
+          
+          <div class="generated-links-table" id="bulkLinksResult" style="display: none;">
+            <!-- Link rows -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right: Live Preview Frame -->
+    <div class="preview-pane">
+      <div class="preview-toolbar">
+        <div>
+          <span style="color: var(--text-muted);">ស្ទាយសំបុត្រ:</span>
+          <select class="theme-select" id="themeSelector" onchange="changePreviewTheme(this.value)">
+            <option value="template-1-royal-gold/">Luxury Royal Gold (មាសឆើតឆាយ)</option>
+            <option value="template-2-blush-floral/">Modern Blush Floral (ផ្កាឈូកស្រទន់)</option>
+            <option value="template-3-midnight-sapphire/">Midnight Sapphire (ខៀវអភិជន)</option>
+          </select>
+        </div>
+        <button class="btn-header" style="padding: 6px 12px;" onclick="reloadPreview()">🔄 Refresh</button>
+      </div>
+
+      <!-- Phone Device -->
+      <div class="phone-mockup">
+        <div class="phone-speaker-bar">
+          <div class="phone-speaker-camera"></div>
+        </div>
+        <iframe class="phone-iframe" id="previewIframe" src="template-1-royal-gold/?preview=true"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="toast">✨ បានរក្សាទុកការកែប្រែដោយជោគជ័យ!</div>
+
+  <script>
+    // Initial Default Data
+    const defaultData = {
+      groomKhmer: "សុមេត",
+      groomEn: "Someth",
+      brideKhmer: "រចនា",
+      brideEn: "Rachna",
+      weddingDate: "2027-04-25",
+      weddingDateKhmer: "ថ្ងៃអាទិត្យ ទី២៥ ខែមេសា ឆ្នាំ២០២៧",
+      venueName: "Someth & Rachna Wedding Hall, Phnom Penh",
+      venueAddress: "រាជធានីភ្នំពេញ / Phnom Penh, Cambodia",
+      venueMapUrl: "https://www.google.com/maps?q=place_id:ChIJnW1xo-lRCTERQk28WazEhaY",
+      bankName: "ABA BANK / KHQR",
+      bankAccount: "001 888 2504",
+      bankOwner: "SOMETH & RACHNA",
+      heroPhoto: "../assets/images/engagement-1.jpg",
+      galleryPhotos: [
+        "../assets/images/engagement-4.jpg",
+        "../assets/images/engagement-5.jpg",
+        "../assets/images/engagement-6.jpg",
+        "../assets/images/engagement-7.jpg",
+        "../assets/images/engagement-8.jpg",
+        "../assets/images/engagement-9.jpg",
+        "../assets/images/engagement-2.jpg",
+        "../assets/images/engagement-3.jpg"
+      ],
+      morningEvents: [
+        { time: "07:00 AM", title: "ជួបជុំភ្ញៀវកិត្តិយស", desc: "Guest Arrival & Morning Refreshment" },
+        { time: "07:30 AM", title: "ពិធីហែជំនូនចូលរោងជ័យ", desc: "Groom's Procession & Dowry Offering" },
+        { time: "08:30 AM", title: "ពិធីសំពះផ្ទឹម ចងដៃ និងសូត្រមន្ត", desc: "Monk Blessing & Knot Tying Ceremony" },
+        { time: "10:00 AM", title: "ពិធីកាត់សក់បង្កក់សិរី និងថតរូប", desc: "Hair Cutting Ceremony & Family Portraits" },
+        { time: "11:30 AM", title: "អញ្ជើញពិសាអាហារថ្ងៃត្រង់", desc: "Family & Guests Lunch" }
+      ],
+      eveningEvents: [
+        { time: "05:00 PM", title: "ទទួលបដិសណ្ឋារកិច្ច និងថតរូប", desc: "Cocktail Reception & Photo Session" },
+        { time: "06:30 PM", title: "ពិធីពិសាភោជនាហារ និងកាត់នំ", desc: "Grand Banquet Dinner & Cake Cutting" },
+        { time: "08:30 PM", title: "ការរាំកម្សាន្ត និងជូនដំណើរភ្ញៀវ", desc: "Celebration Dancing & Farewell" }
+      ]
+    };
+
+    let currentConfig = JSON.parse(localStorage.getItem('wedding_custom_config') || 'null') || defaultData;
+
+    function initForm() {
+      document.getElementById('groomKhmer').value = currentConfig.groomKhmer;
+      document.getElementById('groomEn').value = currentConfig.groomEn;
+      document.getElementById('brideKhmer').value = currentConfig.brideKhmer;
+      document.getElementById('brideEn').value = currentConfig.brideEn;
+      document.getElementById('weddingDate').value = currentConfig.weddingDate;
+      document.getElementById('weddingDateKhmer').value = currentConfig.weddingDateKhmer;
+      document.getElementById('venueName').value = currentConfig.venueName;
+      document.getElementById('venueAddress').value = currentConfig.venueAddress;
+      document.getElementById('venueMapUrl').value = currentConfig.venueMapUrl;
+      document.getElementById('bankName').value = currentConfig.bankName;
+      document.getElementById('bankAccount').value = currentConfig.bankAccount;
+      document.getElementById('bankOwner').value = currentConfig.bankOwner;
+
+      renderTimelineEditors();
+      renderGalleryThumbs();
+    }
+
+    function renderTimelineEditors() {
+      const mWrap = document.getElementById('morning-events-wrap');
+      mWrap.innerHTML = currentConfig.morningEvents.map((ev, idx) => `
+        <div class="timeline-edit-item">
+          <input type="text" class="form-control" style="width: 100px;" value="${escapeHtml(ev.time)}" oninput="updateEvent('morning', ${idx}, 'time', this.value)">
+          <div style="flex:1;">
+            <input type="text" class="form-control" style="margin-bottom: 6px;" value="${escapeHtml(ev.title)}" oninput="updateEvent('morning', ${idx}, 'title', this.value)">
+            <input type="text" class="form-control" value="${escapeHtml(ev.desc)}" oninput="updateEvent('morning', ${idx}, 'desc', this.value)">
+          </div>
+          <button class="btn-remove-row" onclick="removeEvent('morning', ${idx})">✕</button>
+        </div>
+      `).join('');
+
+      const eWrap = document.getElementById('evening-events-wrap');
+      eWrap.innerHTML = currentConfig.eveningEvents.map((ev, idx) => `
+        <div class="timeline-edit-item">
+          <input type="text" class="form-control" style="width: 100px;" value="${escapeHtml(ev.time)}" oninput="updateEvent('evening', ${idx}, 'time', this.value)">
+          <div style="flex:1;">
+            <input type="text" class="form-control" style="margin-bottom: 6px;" value="${escapeHtml(ev.title)}" oninput="updateEvent('evening', ${idx}, 'title', this.value)">
+            <input type="text" class="form-control" value="${escapeHtml(ev.desc)}" oninput="updateEvent('evening', ${idx}, 'desc', this.value)">
+          </div>
+          <button class="btn-remove-row" onclick="removeEvent('evening', ${idx})">✕</button>
+        </div>
+      `).join('');
+    }
+
+    function addScheduleItem(type) {
+      if (type === 'morning') {
+        currentConfig.morningEvents.push({ time: "09:00 AM", title: "កម្មវិធីថ្មី", desc: "New Program Ceremony" });
+      } else {
+        currentConfig.eveningEvents.push({ time: "07:00 PM", title: "កម្មវិធីថ្មី", desc: "New Evening Event" });
+      }
+      renderTimelineEditors();
+      saveAndApply(false);
+    }
+
+    function removeEvent(type, idx) {
+      if (type === 'morning') currentConfig.morningEvents.splice(idx, 1);
+      else currentConfig.eveningEvents.splice(idx, 1);
+      renderTimelineEditors();
+      saveAndApply(false);
+    }
+
+    function updateEvent(type, idx, key, val) {
+      if (type === 'morning') currentConfig.morningEvents[idx][key] = val;
+      else currentConfig.eveningEvents[idx][key] = val;
+      saveAndApply(false);
+    }
+
+    function renderGalleryThumbs() {
+      const strip = document.getElementById('galleryPreviewStrip');
+      strip.innerHTML = currentConfig.galleryPhotos.map((p, idx) => `
+        <div class="thumb-preview-box">
+          <img src="${p}" alt="Photo">
+        </div>
+      `).join('');
+    }
+
+    function handleHeroUpload(input) {
+      if (!input.files || !input.files[0]) return;
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        currentConfig.heroPhoto = e.target.result;
+        document.getElementById('heroPhotoPreviewText').innerHTML = '✅ បានជ្រើសរូបថត Cover: <strong>' + escapeHtml(file.name) + '</strong>';
+        saveAndApply(true);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handleGalleryUpload(input) {
+      if (!input.files || !input.files.length) return;
+      Array.from(input.files).forEach(f => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          currentConfig.galleryPhotos.unshift(e.target.result);
+          renderGalleryThumbs();
+          saveAndApply(true);
+        };
+        reader.readAsDataURL(f);
+      });
+    }
+
+    function liveUpdate() {
+      currentConfig.groomKhmer = document.getElementById('groomKhmer').value;
+      currentConfig.groomEn = document.getElementById('groomEn').value;
+      currentConfig.brideKhmer = document.getElementById('brideKhmer').value;
+      currentConfig.brideEn = document.getElementById('brideEn').value;
+      currentConfig.weddingDate = document.getElementById('weddingDate').value;
+      currentConfig.weddingDateKhmer = document.getElementById('weddingDateKhmer').value;
+      currentConfig.venueName = document.getElementById('venueName').value;
+      currentConfig.venueAddress = document.getElementById('venueAddress').value;
+      currentConfig.venueMapUrl = document.getElementById('venueMapUrl').value;
+      currentConfig.bankName = document.getElementById('bankName').value;
+      currentConfig.bankAccount = document.getElementById('bankAccount').value;
+      currentConfig.bankOwner = document.getElementById('bankOwner').value;
+
+      saveAndApply(false);
+    }
+
+    function saveAndApply(showToastMsg = true) {
+      localStorage.setItem('wedding_custom_config', JSON.stringify(currentConfig));
+      reloadPreview();
+      if (showToastMsg) {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2200);
+      }
+    }
+
+    function changePreviewTheme(themeUrl) {
+      document.getElementById('fullscreen-view-btn').href = themeUrl;
+      const iframe = document.getElementById('previewIframe');
+      iframe.src = themeUrl + "?preview=true&r=" + Date.now();
+    }
+
+    function reloadPreview() {
+      const iframe = document.getElementById('previewIframe');
+      const currentSrc = iframe.src.split('?')[0];
+      iframe.src = currentSrc + "?preview=true&r=" + Date.now();
+    }
+
+    function resetDefaults() {
+      if (confirm('តើអ្នកពិតជាចង់កំណត់ទិន្នន័យត្រឡប់ទៅដើមវិញមែនទេ?')) {
+        currentConfig = JSON.parse(JSON.stringify(defaultData));
+        localStorage.removeItem('wedding_custom_config');
+        initForm();
+        saveAndApply(true);
+      }
+    }
+
+    function exportConfigJson() {
+      const blob = new Blob([JSON.stringify(currentConfig, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `wedding_config_${currentConfig.groomEn}_${currentConfig.brideEn}.json`;
+      a.click();
+    }
+
+    function generateBulkLinks() {
+      const raw = document.getElementById('bulkGuestInput').value.trim();
+      if (!raw) return;
+      const names = raw.split('\n').map(n => n.trim()).filter(n => n.length > 0);
+      const selectedTheme = document.getElementById('themeSelector').value;
+      const baseUrl = window.location.origin + window.location.pathname.replace('studio.html', '') + selectedTheme;
+
+      const container = document.getElementById('bulkLinksResult');
+      container.style.display = 'block';
+      container.innerHTML = names.map(name => {
+        const url = `${baseUrl}?to=${encodeURIComponent(name)}`;
+        return `
+          <div class="link-row">
+            <div>
+              <strong style="color:#fff;">${escapeHtml(name)}</strong>
+              <div style="color:var(--text-muted); font-size:11px; word-break:break-all;">${escapeHtml(url)}</div>
+            </div>
+            <button class="btn-copy-sm" onclick="navigator.clipboard.writeText('${escapeHtml(url)}'); alert('បានចម្លងតំណភ្ជាប់: ' + '${escapeHtml(name)}');">Copy</button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.innerText = text || '';
+      return div.innerHTML;
+    }
+
+    initForm();
+  </script>
+</body>
+</html>

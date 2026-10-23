@@ -1077,6 +1077,45 @@
     }
 
     loadWishes();
+
+    // Studio Custom Config Loader
+    try {
+      const cfg = JSON.parse(localStorage.getItem('wedding_custom_config'));
+      if (cfg) {
+        if (cfg.groomKhmer && cfg.brideKhmer) {
+          const namesKh = `${cfg.groomKhmer} & ${cfg.brideKhmer}`;
+          document.querySelectorAll('.couple-names-khmer, #envelope-screen h2').forEach(el => el.innerText = namesKh);
+        }
+        if (cfg.groomEn && cfg.brideEn) {
+          const namesEn = `${cfg.groomEn} & ${cfg.brideEn}`;
+          document.querySelectorAll('.couple-names-en').forEach(el => el.innerText = namesEn);
+        }
+        if (cfg.weddingDateKhmer) {
+          const dEl = document.querySelector('.wedding-date-label');
+          if (dEl) dEl.innerText = cfg.weddingDateKhmer;
+        }
+        if (cfg.venueName) {
+          const vEl = document.querySelector('.venue-name-kh');
+          if (vEl) vEl.innerText = cfg.venueName;
+        }
+        if (cfg.venueAddress) {
+          const aEl = document.querySelector('.venue-address');
+          if (aEl) aEl.innerText = cfg.venueAddress;
+        }
+        if (cfg.venueMapUrl) {
+          const mEl = document.querySelector('.btn-maps');
+          if (mEl) mEl.href = cfg.venueMapUrl;
+        }
+        if (cfg.heroPhoto) {
+          const hImg = document.querySelector('.couple-avatar-wrap img');
+          if (hImg) hImg.src = cfg.heroPhoto;
+        }
+        if (cfg.bankAccount) {
+          const bEl = document.querySelector('.bank-account-num');
+          if (bEl) bEl.innerText = cfg.bankAccount;
+        }
+      }
+    } catch (err) {}
   </script>
 </body>
 </html>
